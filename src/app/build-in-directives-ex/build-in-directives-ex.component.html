@@ -1,0 +1,40 @@
+
+
+<div class="container">
+    <h2>Learning Built In Directives</h2>
+    <div [class.my-border]="addBorder" [style.width.px]="350">
+<!-- Structural directive: *ngIf is the conditional directive, works as if statemente -->
+        <h3>Structural Directive: *ngIf</h3>
+    <p *ngIf="showContent; else noShow">This message means *ngIf condition is TRUE</p>
+    <ng-template #noShow>
+        <p>I am showing because *ngIf condition is FALSE</p>
+    </ng-template>
+
+    <button (click)="onShowContent()">Show hidden message!</button>
+    </div>
+    
+<!-- Attribute directive: [ngStyle] && [ngClass] -->
+    <br>
+    <div [class.my-second-border]="addBorder" [style.width.px]="350">
+        <h3>Attribute Directive: [ngStyle] & [ngClass]</h3>
+        <p>Used ngStyle directive to change the font color of word: Activated/Deactivated</p>
+        <p>Used ngClass directive to style the background color of the word:  Activated/Deactivated</p>
+        <app-msg-component></app-msg-component>
+
+    </div>
+    <br>
+  <!-- Structural directive: *ngFor -->  
+    <div [class.my-third-border]="addBorder" [style.width.px]="350">
+        <h3>Structural directive: *ngFor</h3>
+        <p>*ngFor is used to loop through property msgs[], and will generate a new message when button is clicked</p>
+        <app-msg-component *ngFor="let msg of msgs"></app-msg-component>
+
+        <button (click)="onShowContent()">Show more message!</button>
+
+        <h4>What is happening?</h4>
+        <p>msg array is created with 2 elements, and the *ngFor will loop through this array when the browser is started.</p>
+        <p>When the button is clicked, one more message is added to the msg[], and *ngFor will loop through the updated msg[] with 3 elements</p>
+        <p>Same pattern continues when the button is clicked</p>
+    </div>
+    
+    
